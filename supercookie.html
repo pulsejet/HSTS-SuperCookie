@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang=en>
+<head>
+<meta charset=utf-8>
+<title>HSTS SuperCookie</title>
+
+<script>
+    var data = new Array(32).fill(0);;
+
+    // Called by JSONP
+    function callUpdate(index, passed) {
+        data[index] = passed;
+        
+        datastring = '';
+        for (var i = 0; i <= data.length / 8; i++){
+           datastring += String.fromCharCode(parseInt(data.slice(8 * i, 8 * i + 8).join(''), 2));
+        }
+        
+        document.getElementById('display_data').innerHTML = datastring.toString();
+    }
+
+    // Set the HSTS values
+    function setData(newstring) {
+        var newdata = [];
+        for (var i = 0; i < newstring.length; i++){
+           newdata = newdata.concat(numToString(newstring.charCodeAt(i), 2, 8).split('')); 
+        }
+
+        for (let i = 0; i < newdata.length; i++) {
+            if (newdata[i] !== "1") continue;
+
+            let xmlhttp = new XMLHttpRequest();
+
+            xhr.onreadystatechange = function() {
+               callUpdate(i, newdata[i]);
+            }
+
+            xmlhttp.open('GET', 'https://' + i + '.hsts.radialapps.com/set/', true);
+            xmlhttp.send();
+        }
+    }
+
+    // Padding for number to string conversion
+    function padStart(string, length, char) {
+        return length > 0 ?
+        padStart(char + string, --length, char) :
+        string;
+    }
+
+    // number to string
+    function numToString(num, radix, length = num.length) {
+        const numString = num.toString(radix);
+        return numString.length === length ?
+        numString :
+        padStart(numString, length - numString.length, "0")
+    }
+
+
+</script>
+</head>
+<body>
+
+<p>Your stored data is:</p>
+<p id="display_data"></p>
+
+<p>
+    Set new data (max 4 characters ASCII): <br>
+    <input type="text" id="mytext" value="HAHA">
+    <button onclick="setData(document.getElementById('mytext').value)">Set Data</button>
+</p>
+
+<script>
+    // Add relevant script tags
+    for (let i = 0; i < data.length; i++) {
+        let new_script = document.createElement('script');
+        new_script.setAttribute('src','http://' + i + '.hsts.radialapps.com');
+        new_script.setAttribute('async', true);
+        document.body.appendChild(new_script);
+    }
+</script>
+
+
+</body>
+</html>
