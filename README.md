@@ -1,5 +1,5 @@
 # HSTS-SuperCookie
-Storing data as HSTS super-cookies is a topic that has come up several times in the past. This simple HTML file along with proper setup with nginx demonstrates that, thankfully, this is no longer an issue, since most major browsers now use separate HSTS sets for incognito modes.
+Storing data as HSTS super-cookies is a topic that has come up several times in the past. This simple HTML file along with proper setup with nginx demonstrates that, thankfully, this is no longer an issue, since most major browsers now use separate HSTS sets for incognito modes. [@ben174](https://github.com/ben174/)'s [hsts-cookie](https://github.com/ben174/hsts-cookie) repo has a nice explanation of something similar.
 
 ## Demo
 A demo found [here](http://demo.hsts.radialapps.com/demo/supercookie.html) was working as of writing this! If you set some data, it should be accessible after you refresh the page, but will vanish if you open incognito/private mode.
