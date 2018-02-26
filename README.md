@@ -9,3 +9,6 @@ The domains used are `#.hsts.your-site.com`, where `#` is the index of the binar
 
 ## Background
 At the time I write this, [Wikipedia noted](https://en.wikipedia.org/w/index.php?title=HTTP_Strict_Transport_Security&oldid=824540810#Privacy_issues) that HSTS can potentially have privacy issues, with HSTS being enabled being possibly used as a store of super-cookies. While I could find references that it had been fixed in most browsers that incognito modes used a different HSTS set, I just had to be sure!
+
+## Testing
+I've tested that the hack doesn't work on Edge 16, Firefox 58, Chrome 64.0.3282.186 and the Safari on my iPad, whose version I'm unsure about.
