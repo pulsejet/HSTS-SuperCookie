@@ -35,7 +35,7 @@
                callUpdate(i, newdata[i]);
             }
 
-            xmlhttp.open('GET', 'https://' + i + '.hsts.radialapps.com/set/', true);
+            xmlhttp.open('GET', 'https://' + i + '.hsts.your-site.com/set/', true);
             xmlhttp.send();
         }
     }
@@ -73,7 +73,7 @@
     // Add relevant script tags
     for (let i = 0; i < data.length; i++) {
         let new_script = document.createElement('script');
-        new_script.setAttribute('src','http://' + i + '.hsts.radialapps.com');
+        new_script.setAttribute('src','http://' + i + '.hsts.your-site.com');
         new_script.setAttribute('async', true);
         document.body.appendChild(new_script);
     }
